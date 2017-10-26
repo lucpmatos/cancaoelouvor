@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Canção e Louvor - Agendamentos</title>
     <!-- Estilo -->
-    <!-- ... -->
+    <link rel="stylesheet" href="build/css/mixins.css">
     <!-- Bootstrap 4.0.0 -->
     <link rel="stylesheet" href="bootstrap-4.0.0/dist/css/bootstrap.min.css">
     <!-- Font-Awesome 4.7.0 -->
@@ -19,13 +19,31 @@
     <script src="iziToast-master/dist/js/iziToast.min.js" type="text/javascript"></script>
   </head>
   <body>
-    <nav class=""></nav>
+      <div class="container logintotal">
+        <div class="row justify-content-center">
+          <div class="col-md-3">
+            <img class="logologin" src="img/logo_branca.png" alt="">
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-5">
+            <div class="boxlogin">
+              <h3>Sistema de Agendamento</h3>
+              <hr>
+            <form action="">
+              <div class="form-group">
+                <input type="login" id="login" class="form-control" placeholder="Insira seu login">
+                <br>
+                <input type="password" id="senha" class="form-control" placeholder="Insira sua senha">
+                <br>
+                <input class="btn btn-success col-md-12" type="submit" value="Entrar">
+              </div><!-- formgroup -->
+            </form>
+          </div><!-- boxlogin -->
+          </div>
+        </div>
+      </div>
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          ...
-        </div><!-- col -->
-      </div><!-- row -->
       <div class="row">
         <a href="#" class="toastcontato1 btn btn-warning" onclick="meutoast1()">Senha incorreta</a>
         <a href="#" class="toastcontato2 btn btn-success" onclick="meutoast2()">Logado com sucesso</a>
@@ -40,7 +58,7 @@
     			title: 'Usuário ou senha incorretos!',
     			message: 'Tente novamente.',
     			theme: 'dark',
-    			color: '#b00000',
+    			color: '#ec5746',
     			icon: 'fa fa-exclamation-circle',
     			layout: '2',
     			position: 'bottomCenter',
