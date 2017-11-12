@@ -1,114 +1,117 @@
-<!-- BEGIN: Principal -->
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="utf-8">
-        <title>Canção e Louvor - Agendamentos</title>
-        <!-- Estilo -->
-        <!-- ... -->
-        <!-- Bootstrap 4.0.0 -->
-        <link rel="stylesheet" href="bootstrap-4.0.0/dist/css/bootstrap.min.css">
-        <!-- Font-Awesome 4.7.0 -->
-        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-        <!-- jQuery -->
-        <script type="text/javascript" src="jquery/jquery-2.2.4.min.js"></script>
-        <!-- iziModal -->
-        <link rel="stylesheet" href="iziModal-master/css/iziModal.min.css">
-        <script type="text/javascript" src="iziModal-master/js/iziModal.min.js"></script>
+<!-- BEGIN: Principal -->
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Canção e Louvor - Agendamentos</title>
+        <!-- Estilo -->
+        <!-- ... -->
+        <!-- Bootstrap 4.0.0 -->
+        <link rel="stylesheet" href="bootstrap-4.0.0/dist/css/bootstrap.min.css">
+        <!-- Font-Awesome 4.7.0 -->
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+        <!-- jQuery -->
+        <script type="text/javascript" src="jquery/jquery-2.2.4.min.js"></script>
+        <!-- iziModal -->
+        <link rel="stylesheet" href="iziModal-master/css/iziModal.min.css">
+        <script type="text/javascript" src="iziModal-master/js/iziModal.min.js"></script>
         <!-- iziTOAST -->
       	<link rel="stylesheet" type="text/css" href="iziToast-master/dist/css/iziToast.css">
         <script src="iziToast-master/dist/js/iziToast.min.js" type="text/javascript"></script>
 
-    </head>
-    <body>
-        <nav class=""></nav>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    ...
-                </div><!-- col -->
-            </div>
-            <div class="row">
-                <a href="#" data-target="#modal" class="trigger btn btn-success">Novo Agendamento</a>
+    </head>
+    <body>
+        <nav class=""></nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    ...
+                </div><!-- col -->
+            </div>
+            <div class="row">
+                <a href="#" data-target="#modal" class="trigger btn btn-success">Novo Agendamento</a>
+                <a href="#" class="btn btn-success">Criar Usuário</a>
+                <a href="#" class="btn btn-success">Sair</a>
+
                 <!--<a href="#" data-target="#modaleditar" class="trigger btn btn-success">Teste editar</a>-->
-                <div class="col-md-12">   
-                    <h3 class="page-header">Listagem</h3>
-                    <table border="1">
-                        <tr>
-                            <th>Data</th>
-                            <th>Local</th>
-                            <th>Hora Inicio</th>
-                            <th>Hora Fim</th>
-                            <th>Anfitrião</th>
-                            <th>Descrição</th>
-                            <th> </th>
-                        </tr>
-                        <!-- BEGIN: Lista -->
-                        <tr>
-                            <td>{DATA}</td>
-                            <td>{LOCAL}</td>
-                            <td>{HORAI}</td>
-                            <td>{HORAF}</td>
-                            <td>{ANFITRIAO}</td>
-                            <td>{DESCRICAO}</td>
-                            <td><a href="dashboard.php?op=Excluir&idagenda={IDAGENDA}">Excluir</a></td>
-                            <td><a href="dashboard.php?op=Editar&idagenda={IDAGENDA}">Editar</a></td>
-                        </tr>
-                        <!-- END: Lista -->
-                    </table>
-                </div>
-            </div><!-- row -->
-            <div class="row">
-                <div id="modal">
-                    <div class="col-md-6">
-                        <form role="form" action="dashboard.php" name="form1" method="post" id="form1">
-                            <div class="form-group">
-                                <label>Local: {teste}</label>
-                                <input type="text" name="local" id="descricao" class="form-control"/>
-                            </div>
-                            <div class="form-group">
-                                <label>Anfitrião:</label>
-                                <input type="text" name="anfitriao" id="descricao" class="form-control"/>
-                            </div>
-                            <div class="form-group">
-                                <label>Data:</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-                                    <input type="date" name="dataag" id="dataag" class="form-control" required/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-5">
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-clock-o"></i>
-                                        </div>
-                                        <input type="time" name="horaini" id="horaini" class="form-control" required data-inputmask="'alias': 'hh:mm'" data-mask/>
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-clock-o"></i>
-                                        </div>
-                                        <input type="time" name="horafim" id="horafim" class="form-control" required data-inputmask="'alias': 'hh:mm'" data-mask /> 
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Descrição:</label>
-                                <textarea name="descricao" class="form-control" rows="2">{descricao}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <button class="btn btn-info btn-flat" type="submit" name="op" value="Salvar">Salvar</button>   
-                            </div>
-                        </form>
-                    </div><!-- col -->
-                </div><!-- modal -->
+                <div class="col-md-12">   
+                    <h3 class="page-header">Listagem</h3>
+                    <table border="1">
+                        <tr>
+                            <th>Data</th>
+                            <th>Local</th>
+                            <th>Hora Inicio</th>
+                            <th>Hora Fim</th>
+                            <th>Anfitrião</th>
+                            <th>Descrição</th>
+                            <th> </th>
+                        </tr>
+                        <!-- BEGIN: Lista -->
+                        <tr>
+                            <td>{DATA}</td>
+                            <td>{LOCAL}</td>
+                            <td>{HORAI}</td>
+                            <td>{HORAF}</td>
+                            <td>{ANFITRIAO}</td>
+                            <td>{DESCRICAO}</td>
+                            <td><a href="dashboard.php?op=Excluir&idagenda={IDAGENDA}">Excluir</a></td>
+                            <td><a href="dashboard.php?op=Editar&idagenda={IDAGENDA}">Editar</a></td>
+                        </tr>
+                        <!-- END: Lista -->
+                    </table>
+                </div>
             </div><!-- row -->
-        </div><!-- container -->
+            <div class="row">
+                <div id="modal">
+                    <div class="col-md-6">
+                        <form role="form" action="dashboard.php" name="form1" method="post" id="form1">
+                            <div class="form-group">
+                                <label>Local: {teste}</label>
+                                <input type="text" name="local" id="descricao" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Anfitrião:</label>
+                                <input type="text" name="anfitriao" id="descricao" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Data:</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="date" name="dataag" id="dataag" class="form-control" required/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-5">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-clock-o"></i>
+                                        </div>
+                                        <input type="time" name="horaini" id="horaini" class="form-control" required data-inputmask="'alias': 'hh:mm'" data-mask/>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-clock-o"></i>
+                                        </div>
+                                        <input type="time" name="horafim" id="horafim" class="form-control" required data-inputmask="'alias': 'hh:mm'" data-mask /> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Descrição:</label>
+                                <textarea name="descricao" class="form-control" rows="2">{descricao}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-info btn-flat" type="submit" name="op" value="Salvar">Salvar</button>   
+                            </div>
+                        </form>
+                    </div><!-- col -->
+                </div><!-- modal -->
+            </div><!-- row -->
+        </div><!-- container -->
 
         <!-- script para abertura do logado com sucesso -->
 <script type='text/javascript'>
@@ -128,30 +131,30 @@ iziToast.show({
 });
 </script>
 
-        <!-- script para abertura do modal -->
-        <script type="text/javascript">
-            
-            $("#modal").iziModal({
-                title: 'Agenda',
-                subtitle: '{Titulo}',
-                headerColor: 'rgb(0,112,187)',
-                icon: 'fa fa-calendar-times-o',
-                theme: '',
-                width: '1000px',
-                zindex: '9999',
-                radius: '0',
-                fullscreen: true,
-                transitionIn: 'comingIn',
-                transitionOut: 'comingOut',
-                overlayColor: 'rgba(0,0,0,0.7)'
-            });
-
-            $(document).on('click', '.trigger', function (event) {
-                event.preventDefault();
-                $('#modal').iziModal('open');
-            });
-        </script><!-- modal -->
-        <!--{SCRIPT01}-->
-    </body>
-</html>
+        <!-- script para abertura do modal -->
+        <script type="text/javascript">
+            
+            $("#modal").iziModal({
+                title: 'Agenda',
+                subtitle: '{Titulo}',
+                headerColor: 'rgb(0,112,187)',
+                icon: 'fa fa-calendar-times-o',
+                theme: '',
+                width: '1000px',
+                zindex: '9999',
+                radius: '0',
+                fullscreen: true,
+                transitionIn: 'comingIn',
+                transitionOut: 'comingOut',
+                overlayColor: 'rgba(0,0,0,0.7)'
+            });
+
+            $(document).on('click', '.trigger', function (event) {
+                event.preventDefault();
+                $('#modal').iziModal('open');
+            });
+        </script><!-- modal -->
+        <!--{SCRIPT01}-->
+    </body>
+</html>
 <!-- END: Principal -->

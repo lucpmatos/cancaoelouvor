@@ -1,183 +1,183 @@
-<!-- BEGIN: Principal -->
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="utf-8">
-        <title>Canção e Louvor - Agendamentos</title>
-        <!-- Estilo -->
-        <!-- ... -->
-        <!-- Bootstrap 4.0.0 -->
-        <link rel="stylesheet" href="bootstrap-4.0.0/dist/css/bootstrap.min.css">
-        <!-- Font-Awesome 4.7.0 -->
-        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-        <!-- jQuery -->
-        <script type="text/javascript" src="jquery/jquery-2.2.4.min.js"></script>
-        <!-- iziModal -->
-        <link rel="stylesheet" href="iziModal-master/css/iziModal.min.css">
-        <script type="text/javascript" src="iziModal-master/js/iziModal.min.js"></script>
-    </head>
-    <body>
-        <nav class=""></nav>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    ...
-                </div><!-- col -->
-            </div>
-            <div class="row">
-                <a href="#" data-target="#modal" class="trigger btn btn-success">Novo Agendamento</a>
-                <!--<a href="#" data-target="#modaleditar" class="trigger btn btn-success">Teste editar</a>-->
-            </div><!-- row -->
-
-            <div class="row">
-
-                    <div class="col-md-6">
-
-                        <form role="form" action="dashboard.php" name="form1" method="post" id="form1">
-
-                            <div class="form-group">
-
-                                <label>Local: {teste}</label>
-
-                                <input type="text" name="local" id="descricao" class="form-control"/>
-
-                            </div>
-
-                            <div class="form-group">
-
-                                <label>Anfitrião:</label>
-
-                                <input type="text" name="anfitriao" id="descricao" class="form-control"/>
-
-                            </div>
-
-                            <div class="form-group">
-
-                                <label>Data:</label>
-
-                                <div class="input-group">
-
-                                    <div class="input-group-addon">
-
-                                        <i class="fa fa-calendar"></i>
-
-                                    </div>
-
-                                    <input type="date" name="dataag" id="dataag" class="form-control" required/>
-
-                                </div>
-
-                            </div>
-
-                            <div class="form-group">
-
-                                <div class="col-md-5">
-
-                                    <div class="input-group">
-
-                                        <div class="input-group-addon">
-
-                                            <i class="fa fa-clock-o"></i>
-
-                                        </div>
-
-                                        <input type="time" name="horaini" id="horaini" class="form-control" required data-inputmask="'alias': 'hh:mm'" data-mask/>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="col-md-5">
-
-                                    <div class="input-group">
-
-                                        <div class="input-group-addon">
-
-                                            <i class="fa fa-clock-o"></i>
-
-                                        </div>
-
-                                        <input type="time" name="horafim" id="horafim" class="form-control" required data-inputmask="'alias': 'hh:mm'" data-mask />
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="form-group">
-
-                                <label>Descrição:</label>
-
-                                <textarea name="descricao" class="form-control" rows="2">{descricao}</textarea>
-
-                            </div>
-
-                            <div class="form-group">
-
-                                <button class="btn btn-info btn-flat" type="submit" name="op" value="Salvar">Salvar</button>
-
-                            </div>
-
-                        </form>
-
-                    </div><!-- col -->
-
-            </div><!-- row -->
-        </div><!-- container -->
-
-
-
-        <!-- script para abertura do modal -->
-
-        <script type="text/javascript">
-
-
-
-            $("#modal").iziModal({
-
-                title: 'Agenda',
-
-                subtitle: '{Titulo}',
-
-                headerColor: 'rgb(0,112,187)',
-
-                icon: 'fa fa-calendar-times-o',
-
-                theme: '',
-
-                width: '1000px',
-
-                zindex: '9999',
-
-                radius: '0',
-
-                fullscreen: true,
-
-                transitionIn: 'comingIn',
-
-                transitionOut: 'comingOut',
-
-                overlayColor: 'rgba(0,0,0,0.7)'
-
-            });
-
-
-
-            $(document).on('click', '.trigger', function (event) {
-
-                event.preventDefault();
-
-                $('#modal').iziModal('open');
-
-            });
-
-        </script><!-- modal -->
-
-        {SCRIPT01}
-
-    </body>
-
-</html>
-
-<!-- END: Principal -->
+<!-- BEGIN: Principal -->
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Canção e Louvor - Agendamentos</title>
+        <!-- Estilo -->
+        <!-- ... -->
+        <!-- Bootstrap 4.0.0 -->
+        <link rel="stylesheet" href="bootstrap-4.0.0/dist/css/bootstrap.min.css">
+        <!-- Font-Awesome 4.7.0 -->
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+        <!-- jQuery -->
+        <script type="text/javascript" src="jquery/jquery-2.2.4.min.js"></script>
+        <!-- iziModal -->
+        <link rel="stylesheet" href="iziModal-master/css/iziModal.min.css">
+        <script type="text/javascript" src="iziModal-master/js/iziModal.min.js"></script>
+    </head>
+    <body>
+        <nav class=""></nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    ...
+                </div><!-- col -->
+            </div>
+            <div class="row">
+                <a href="#" data-target="#modal" class="trigger btn btn-success">Novo Agendamento</a>
+                <!--<a href="#" data-target="#modaleditar" class="trigger btn btn-success">Teste editar</a>-->
+            </div><!-- row -->
+
+            <div class="row">
+
+                    <div class="col-md-6">
+
+                        <form role="form" action="dashboard.php" name="form1" method="post" id="form1">
+
+                            <div class="form-group">
+
+                                <label>Local:</label>
+
+                                <input type="text" name="local" id="descricao" class="form-control" value="{LOCAL}"/>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label>Anfitrião:</label>
+
+                                <input type="text" name="anfitriao" id="descricao" class="form-control" value="{ANFITRIAO}"/>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label>Data:</label>
+
+                                <div class="input-group">
+
+                                    <div class="input-group-addon">
+
+                                        <i class="fa fa-calendar"></i>
+
+                                    </div>
+
+                                    <input type="date" name="dataag" id="dataag" class="form-control" value="{DATA}" required/>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-md-5">
+
+                                    <div class="input-group">
+
+                                        <div class="input-group-addon">
+
+                                            <i class="fa fa-clock-o"></i>
+
+                                        </div>
+
+                                        <input type="time" name="horaini" value="{HORAINI}" id="horaini" class="form-control" required data-inputmask="'alias': 'hh:mm'" data-mask/>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-5">
+
+                                    <div class="input-group">
+
+                                        <div class="input-group-addon">
+
+                                            <i class="fa fa-clock-o"></i>
+
+                                        </div>
+
+                                        <input type="time" name="horafim" id="horafim" value="{HORAFIM}" class="form-control" required data-inputmask="'alias': 'hh:mm'" data-mask />
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label>Descrição:</label>
+
+                                <textarea name="descricao" class="form-control" rows="2">{descricao}</textarea>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <button class="btn btn-info btn-flat" type="submit" name="op" value="Salvar">Salvar</button>
+
+                            </div>
+
+                        </form>
+
+                    </div><!-- col -->
+
+            </div><!-- row -->
+        </div><!-- container -->
+
+
+
+        <!-- script para abertura do modal -->
+
+        <script type="text/javascript">
+
+
+
+            $("#modal").iziModal({
+
+                title: 'Agenda',
+
+                subtitle: '{Titulo}',
+
+                headerColor: 'rgb(0,112,187)',
+
+                icon: 'fa fa-calendar-times-o',
+
+                theme: '',
+
+                width: '1000px',
+
+                zindex: '9999',
+
+                radius: '0',
+
+                fullscreen: true,
+
+                transitionIn: 'comingIn',
+
+                transitionOut: 'comingOut',
+
+                overlayColor: 'rgba(0,0,0,0.7)'
+
+            });
+
+
+
+            $(document).on('click', '.trigger', function (event) {
+
+                event.preventDefault();
+
+                $('#modal').iziModal('open');
+
+            });
+
+        </script><!-- modal -->
+
+        {SCRIPT01}
+
+    </body>
+
+</html>
+
+<!-- END: Principal -->
