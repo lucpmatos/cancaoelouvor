@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Canção e Louvor - Agendamentos</title>
     <!-- Estilo -->
-    <link rel="stylesheet" href="build/css/mixins.css">
+    <link rel="stylesheet" href="build/css/estilo-login.css">
     <!-- Bootstrap 4.0.0 -->
     <link rel="stylesheet" href="bootstrap-4.0.0/dist/css/bootstrap.min.css">
     <!-- Font-Awesome 4.7.0 -->
