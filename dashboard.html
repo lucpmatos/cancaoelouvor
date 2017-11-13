@@ -79,16 +79,21 @@
                                         <div class="row">
                                         <br>
                                         <form class="col s12" role="form" action="dashboard.php" name="form1" method="post" id="form1">
+                                            <div class="row">
                                             <div class="input-field">
-                                                <label>Local: {teste}</label>
                                                 <input type="text" name="local" id="descricao" class="form-control"/>
+                                                <label>Local: {teste}</label>
                                             </div>
+                                            </div><!-- row -->
+                                            <div class="row">
                                             <div class="input-field">
-                                                <label>Anfitrião:</label>
                                                 <input type="text" name="anfitriao" id="descricao" class="form-control"/>
+                                                <label>Anfitrião:</label>
                                             </div>
+                                            </div><!-- row -->
+                                            <div class="row">
                                             <div class="input-field">
-                                                <label>Data:</label>
+                                                <!--<label>Data:</label>-->
                                                 <div class="input-group">
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
@@ -96,31 +101,38 @@
                                                     <input type="date" name="dataag" id="dataag" class="form-control" required/>
                                                 </div>
                                             </div>
-                                            <div class="input-field">
+                                            </div><!-- row -->
+                                            <div class="row">
+                                            <div class="input-group">
                                                 <div class="col s12">
-                                                    <div class="input-group">
-                                                        <div class="input-group-addon">
+                                                    Horário de início:
+                                                    <div class="input-field inline">
+                                                        <!--<div class="input-group-addon">
                                                             <i class="fa fa-clock-o"></i>
-                                                        </div>
+                                                        </div>-->
                                                         <input type="time" name="horaini" id="horaini" class="form-control" required data-inputmask="'alias': 'hh:mm'" data-mask/>
                                                     </div>
                                                 </div>
                                                 <div class="col s12">
-                                                    <div class="input-group">
-                                                        <div class="input-group-addon">
+                                                    Horário de término:
+                                                    <div class="input-field inline">
+                                                        <!--<div class="input-group-addon">
                                                             <i class="fa fa-clock-o"></i>
-                                                        </div>
+                                                        </div>-->
                                                         <input type="time" name="horafim" id="horafim" class="form-control" required data-inputmask="'alias': 'hh:mm'" data-mask />
                                                     </div>
                                                 </div>
                                             </div>
+                                            </div><!-- row -->
+                                            <div class="row">
                                             <div class="input-field">
-                                                <label>Descrição:</label>
                                                 <textarea name="descricao" class="materialize-textarea" rows="2">{descricao}</textarea>
+                                                <label>Descrição:</label>
                                             </div>
+                                            </div><!-- row -->
                                             <br>
                                             <div class="input-field">
-                                                <button class="btn waves-effect waves-light" type="submit" name="op" value="Salvar"><i class="fa fa-floppy-o"></i> Salvar</button>
+                                                <button class="btn waves-effect green-cancao waves-light" type="submit" name="op" value="Salvar"><i class="fa fa-floppy-o"></i> Salvar</button>
                                             </div>
                                         </form>
                                     </div><!-- row -->
