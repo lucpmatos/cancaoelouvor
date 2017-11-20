@@ -1,9 +1,10 @@
 <?php
-
+echo "teste";
 include_once("include/config.php");
 include_once("include/xtpl.php3");
 
-if ($op == 'Editar') {
+//Verifica qual pagina HTML exibir.
+if ($op == 'Edit') {
 
     $x = new XTemplate("editar.html");
 } else {
@@ -12,10 +13,9 @@ if ($op == 'Editar') {
 }
 
 
-
 //Javascript Mensagem e Modal
-if ($welcome == 1) {
-    $welcome = 0;
+if ($msg == 1) {
+    $msg  = 0;
     $x->assign("SCRIPT01", "
                 <script type='text/javascript'>
                     iziToast.show({
@@ -44,30 +44,34 @@ if ($op == '' or $op == 'Pesquisar') {
     } else {
         $dtpesquisa = $datape;
     }
+    
+    
 // Edição de agenda
-} elseif ($op == 'Editar') {
+} elseif ($op == 'Edit') {
 
     $q3 = mysql_query("SELECT DATA, LOCAL, ANFITRIAO, HORAINI, HORAFIM, DESCRICAO, IDAGENDA
         FROM PHPAGENDAMENTO 
         WHERE IDAGENDA=$idagenda");
     $r3 = mysql_fetch_object($q3);
 
-    $descricao = utf8_encode($r3->DESCRICAO);
-    $horaini = gmdate("i:s", $r3->HORAINI);
-    $horafim = gmdate("i:s", $r3->HORAFIM);
+    $descricao1 = html_entity_decode($r3->DESCRICAO);
+    $horaini1 = gmdate("i:s", $r3->HORAINI);
+    $horafim1 = gmdate("i:s", $r3->HORAFIM);
 
-    $x->assign("IDAGENDA", $r3->IDAGENDA);
-    $x->assign("DATA", $r3->DATA);
-    $x->assign("LOCAL", $r3->LOCAL);
-    $x->assign("ANFITRIAO", $r3->ANFITRIAO);
-    $x->assign("HORAI", $horaini);
-    $x->assign("HORAF", $horafim);
-    $x->assign("STATUS", $r3->STATUS);
-    $x->assign("DESCRICAO", $descricao);
+    $x->assign("IDAGENDA1", $r3->IDAGENDA);
+    $x->assign("DATA1", $r3->DATA);
+    $x->assign("LOCAL1", $r3->LOCAL);
+    $x->assign("ANFITRIAO1", $r3->ANFITRIAO);
+    $x->assign("HORAI1", $horaini1);
+    $x->assign("HORAF1", $horafim1);
+    $x->assign("STATUS1", $r3->STATUS);
+    $x->assign("DESCRICAO1", $descricao1);
 
 //Inclusão de um novo registro na agenda    
-} elseif ($op == 'Salvar') {
+} elseif ($op == 'Insert') {
 
+    echo "teste";
+    
     $MMl = substr("$ghora", 3, 5);
     $MMl = intval($MMl);
     $HRl = substr("$ghora", 0, 2);
@@ -100,16 +104,15 @@ if ($op == '' or $op == 'Pesquisar') {
     $datag = "$ano$mes$dia";
 //Verifica se a data do compromisso é menor que a data de hoje.
     if ($datag < $hoje) {
-        echo "<script>alert('Fora do periodo permitido! #cod2')</script>"
-        . "<script>window.open('dashboard.php','_parent','')</script>";
+        //echo "<script>alert('Fora do periodo permitido! #cod2')</script><script>window.open('dashboard.php','_parent','')</script>";
     }
 
 //Verifica se a data do compromosso é maior ou igual a data de hoje.
     if ($datag >= $hoje) {
 
         $q2 = mysql_query("SELECT IDAGENDA FROM PHPAGENDAMENTO
-    WHERE DATA='$datag' AND STATUS<>'C'
-    AND (HORAINI BETWEEN '$HI' AND '$HF' OR HORAFIM BETWEEN '$HI' AND '$HF')");
+            WHERE DATA='$datag' AND STATUS<>'C'
+            AND (HORAINI BETWEEN '$HI' AND '$HF' OR HORAFIM BETWEEN '$HI' AND '$HF')");
         $r2 = mysql_fetch_object($q2);
 
         if ($r2->IDAGENDA == '') {
@@ -119,26 +122,74 @@ if ($op == '' or $op == 'Pesquisar') {
             echo "<script>alert('Cadastro efetuado com sucesso!')</script>";
         }
     }
+// Função para atualizar os dados
+} elseif ($op == 'Update') {
+    
+        $MMl = substr("$ghora", 3, 5);
+    $MMl = intval($MMl);
+    $HRl = substr("$ghora", 0, 2);
+    $HRl = intval($HRl);
+    $HRl = $HRl * 60;
+    $Hl = $MMl + $HRl;
+
+    $MMi = substr("$horaini", 3, 5);
+    $MMi = intval($MMi);
+    $HRi = substr("$horaini", 0, 2);
+    $HRi = intval($HRi);
+    $HRi = $HRi * 60;
+    $HI = $MMi + $HRi;
+
+    //echo "$HRi : $MMi";
+
+    $MMf = substr("$horafim", 3, 5);
+    $MMf = intval($MMf);
+    $HRf = substr("$horafim", 0, 2);
+    $HRf = intval($HRf);
+    $HRf = $HRf * 60;
+    $HF = $MMf + $HRf;
+
+    //echo "<br>$HRf : $MMf ";
+
+    $dia = substr("$dataag", 8, 10);
+    $mes = substr("$dataag", -5, -3);
+    $ano = substr("$dataag", -10, -6);
+
+    $datag = "$ano$mes$dia";
+    
+    
+    
+    //Verifica se a data do compromisso é menor que a data de hoje.
+    if ($datag < $hoje) {
+       echo "<script>alert('Fora do periodo permitido para edição! #cod2')</script><script>window.open('dashboard.php','_parent','')</script>";
+    }
+    
+    mysql_query("UPDATE PHPAGENDAMENTO SET LOCAL = '$local', DESCRICAO = '$descricao', DATA='$datag', ANFITRIAO = '$anfitriao', HORAINI = '$HI', HORAFIM = '$HF'"
+            . " WHERE IDAGENDA=$idagenda");
+
+    
+    
+     
 //Exclusão do registro na Agenda.
-} elseif ($op == 'Excluir') {
+} elseif ($op == 'Delete') {
 
     mysql_query("DELETE FROM PHPAGENDAMENTO WHERE IDAGENDA=$idagenda");
     echo "<script>alert('Excluido com sucesso!')</script>"
     . "<script>window.open('dashboard.php','_parent','')</script>";
 }
 
-
-// Listagem da Agenda
-$q1 = mysql_query("SELECT A.DATA, A.LOCAL, A.ANFITRIAO, HORAINI, HORAFIM, DESCRICAO, A.IDAGENDA
+    // Listagem da Agenda
+$q1 = mysql_query("SELECT A.LOCAL, A.ANFITRIAO, HORAINI, HORAFIM, DESCRICAO, A.IDAGENDA
+  , DATE_FORMAT(A.DATA,'%d/%m/%Y') DATA
   , (CASE A.STATUS WHEN 'P' THEN 'Pendente' WHEN 'A' THEN 'Agendado' WHEN 'C' THEN 'Cancelado' WHEN 'R' THEN 'Realizado'
 	END) AS STATUS
-FROM PHPAGENDAMENTO A");
+FROM PHPAGENDAMENTO A
+ORDER BY A.DATA, A.HORAINI");
 while ($r1 = mysql_fetch_object($q1)) {
 
-    $descricao = utf8_encode($r1->DESCRICAO);
+    $descricao = html_entity_decode($r1->DESCRICAO);
     $horaini = gmdate("i:s", $r1->HORAINI);
     $horafim = gmdate("i:s", $r1->HORAFIM);
-
+    
     $x->assign("IDAGENDA", $r1->IDAGENDA);
     $x->assign("DATA", $r1->DATA);
     $x->assign("LOCAL", $r1->LOCAL);
@@ -150,6 +201,7 @@ while ($r1 = mysql_fetch_object($q1)) {
 
     $x->parse("Principal.Lista");
 }
+
 $x->parse("Principal");
 $x->out("Principal");
 ?>
