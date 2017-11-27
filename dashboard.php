@@ -1,5 +1,4 @@
 <?php
-echo "teste";
 include_once("include/config.php");
 include_once("include/xtpl.php3");
 
@@ -7,6 +6,11 @@ include_once("include/xtpl.php3");
 if ($op == 'Edit') {
 
     $x = new XTemplate("editar.html");
+    
+} elseif ($op == 'Criar'){    
+
+    $x = new XTemplate("criar.html");
+
 } else {
 
     $x = new XTemplate("dashboard.html");
@@ -34,18 +38,19 @@ if ($msg == 1) {
                     });
                 </script>");
 }
+
+// Filtro padrão
+$where1 = "WHERE DATA > $hoje";
+
 //Pesquisa por periodo e Listagem
-if ($op == '' or $op == 'Pesquisar') {
-
-    $x->assign("Titulo", "Reservar um Horário");
-
-    if ($datape == '') {
-        $dtpesquisa = $hoje;
-    } else {
-        $dtpesquisa = $datape;
-    }
+if ($op == 'Search') {
     
+$where1 = "WHERE DATA between '$dataini' AND '$datafim'";    
+
+$x->assign("DATAINI", $dataini);
+$x->assign("DATAFIM", $datafim);
     
+
 // Edição de agenda
 } elseif ($op == 'Edit') {
 
@@ -70,7 +75,7 @@ if ($op == '' or $op == 'Pesquisar') {
 //Inclusão de um novo registro na agenda    
 } elseif ($op == 'Insert') {
 
-    echo "teste";
+
     
     $MMl = substr("$ghora", 3, 5);
     $MMl = intval($MMl);
@@ -102,6 +107,9 @@ if ($op == '' or $op == 'Pesquisar') {
     $ano = substr("$dataag", -10, -6);
 
     $datag = "$ano$mes$dia";
+    
+        $x->assign("TESTE", "INSERT INTO PHPAGENDAMENTO VALUES ('0','$local','$anfitriao','$datag','$HI','$HF','$descricao','P','')");
+    
 //Verifica se a data do compromisso é menor que a data de hoje.
     if ($datag < $hoje) {
         //echo "<script>alert('Fora do periodo permitido! #cod2')</script><script>window.open('dashboard.php','_parent','')</script>";
@@ -115,12 +123,12 @@ if ($op == '' or $op == 'Pesquisar') {
             AND (HORAINI BETWEEN '$HI' AND '$HF' OR HORAFIM BETWEEN '$HI' AND '$HF')");
         $r2 = mysql_fetch_object($q2);
 
-        if ($r2->IDAGENDA == '') {
+        //if ($r2->IDAGENDA == '') {
 
             mysql_query("INSERT INTO PHPAGENDAMENTO VALUES ('0','$local','$anfitriao','$datag','$HI','$HF','$descricao','P','')");
 
             echo "<script>alert('Cadastro efetuado com sucesso!')</script>";
-        }
+        //}
     }
 // Função para atualizar os dados
 } elseif ($op == 'Update') {
@@ -183,6 +191,7 @@ $q1 = mysql_query("SELECT A.LOCAL, A.ANFITRIAO, HORAINI, HORAFIM, DESCRICAO, A.I
   , (CASE A.STATUS WHEN 'P' THEN 'Pendente' WHEN 'A' THEN 'Agendado' WHEN 'C' THEN 'Cancelado' WHEN 'R' THEN 'Realizado'
 	END) AS STATUS
 FROM PHPAGENDAMENTO A
+$where1
 ORDER BY A.DATA, A.HORAINI");
 while ($r1 = mysql_fetch_object($q1)) {
 
